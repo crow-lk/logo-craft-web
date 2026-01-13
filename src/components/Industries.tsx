@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Anchor, Building2, Zap, Car, Package, Shirt, BoxesIcon } from "lucide-react";
+import { Anchor, Building2, Zap, Car, Package, Shirt, BoxesIcon, FileText, AlertTriangle, Target } from "lucide-react";
 import warehouseImage from "@/assets/warehouse.jpg";
 
 const industries = [
@@ -13,9 +13,9 @@ const industries = [
 ];
 
 const whyMatters = [
-  { text: "Each industry has different HS & permit logic", icon: "📋" },
-  { text: "Document mistakes scale faster than shipment volume", icon: "⚠️" },
-  { text: "Early planning prevents port-level firefighting", icon: "🎯" },
+  { text: "Each industry has different HS & permit logic", icon: FileText },
+  { text: "Document mistakes scale faster than shipment volume", icon: AlertTriangle },
+  { text: "Early planning prevents port-level firefighting", icon: Target },
 ];
 
 const fadeInUp = {
@@ -112,7 +112,7 @@ const Industries = () => {
                   whileHover={{ scale: 1.05 }}
                   className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-5"
                 >
-                  <span className="text-3xl">{item.icon}</span>
+                  <item.icon className="w-7 h-7 text-secondary" />
                   <p className="text-white/90 font-medium">{item.text}</p>
                 </motion.div>
               ))}

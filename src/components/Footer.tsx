@@ -137,9 +137,20 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/50">
-            © {currentYear} Linkcore Lanka (Pvt) Ltd. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-sm text-white/50">
+              © {currentYear} Linkcore Lanka (Pvt) Ltd. All rights reserved.
+            </p>
+            <span className="hidden sm:inline text-white/30">|</span>
+            <a 
+              href="https://crow.lk" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm text-white/50 hover:text-secondary transition-colors"
+            >
+              Powered by crow.lk
+            </a>
+          </div>
           <motion.button
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}

@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import { Globe, Building2, MapPin, Landmark } from "lucide-react";
 import globalTradeImage from "@/assets/global-trade-network.jpg";
 
 const regions = [
-  { name: "Asia", flag: "🌏", countries: "China, India, Japan, Vietnam" },
-  { name: "Europe", flag: "🌍", countries: "UK, Germany, Netherlands" },
-  { name: "North America", flag: "🌎", countries: "USA, Canada, Mexico" },
-  { name: "Middle East", flag: "🏛️", countries: "UAE, Saudi Arabia, Qatar" },
+  { name: "Asia", icon: Globe, countries: "China, India, Japan, Vietnam", color: "from-primary to-ocean" },
+  { name: "Europe", icon: Building2, countries: "UK, Germany, Netherlands", color: "from-secondary to-gold-light" },
+  { name: "North America", icon: MapPin, countries: "USA, Canada, Mexico", color: "from-ocean to-primary" },
+  { name: "Middle East", icon: Landmark, countries: "UAE, Saudi Arabia, Qatar", color: "from-navy-light to-primary" },
 ];
 
 const fadeInUp = {
@@ -67,7 +68,9 @@ const GlobalReach = () => {
                   whileHover={{ scale: 1.03, x: 5 }}
                   className="flex items-start gap-4 bg-card p-4 rounded-xl border border-border hover:border-primary/30 hover:shadow-lg transition-all cursor-default"
                 >
-                  <span className="text-3xl">{region.flag}</span>
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${region.color} flex items-center justify-center`}>
+                    <region.icon className="w-5 h-5 text-white" />
+                  </div>
                   <div>
                     <p className="font-semibold text-foreground">{region.name}</p>
                     <p className="text-xs text-muted-foreground">{region.countries}</p>

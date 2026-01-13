@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, Ship, FileCheck, FileText, User, ShoppingCart, ArrowRight } from "lucide-react";
+import { Search, Ship, FileCheck, FileText, User, ShoppingCart, ArrowRight, Package, Calendar, Lightbulb } from "lucide-react";
 import airFreightImage from "@/assets/air-freight.jpg";
 import customsImage from "@/assets/customs-documents.jpg";
 import warehouseImage from "@/assets/warehouse.jpg";
@@ -207,17 +207,19 @@ const Services = () => {
           <h3 className="text-xl md:text-2xl font-serif font-bold text-foreground text-center mb-8">Flexible Engagement Models</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: "Per shipment", icon: "📦", desc: "Single trade support" },
-              { label: "Per project", icon: "📋", desc: "End-to-end coordination" },
-              { label: "Monthly retainer", icon: "📅", desc: "Ongoing partnership" },
-              { label: "Advisory-only", icon: "💡", desc: "Expert guidance" },
+              { label: "Per shipment", icon: Package, desc: "Single trade support" },
+              { label: "Per project", icon: FileText, desc: "End-to-end coordination" },
+              { label: "Monthly retainer", icon: Calendar, desc: "Ongoing partnership" },
+              { label: "Advisory-only", icon: Lightbulb, desc: "Expert guidance" },
             ].map((model, i) => (
               <motion.div 
                 key={i} 
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="text-center p-5 rounded-xl bg-muted/50 hover:bg-muted border border-transparent hover:border-primary/20 transition-all cursor-default"
               >
-                <span className="text-3xl mb-3 block">{model.icon}</span>
+                <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                  <model.icon className="w-6 h-6 text-primary" />
+                </div>
                 <p className="font-semibold text-foreground mb-1">{model.label}</p>
                 <p className="text-xs text-muted-foreground">{model.desc}</p>
               </motion.div>
