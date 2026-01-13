@@ -1,14 +1,9 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# robots.txt for Canga Holdings (Pvt) Ltd
+# Allows search engines to crawl the main website while disallowing sensitive or unnecessary paths
 
 User-agent: *
 Allow: /
+Disallow: /includes/
+Disallow: /assets/fonts/
+Disallow: /*.php$  # Prevent crawling of PHP files except index.php
+Sitemap: https://www.cangaholdings.com/sitemap.xml
