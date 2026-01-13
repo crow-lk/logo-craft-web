@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Globe, Shield, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Lottie from "lottie-react";
 import { useEffect, useState } from "react";
@@ -90,33 +90,6 @@ const Hero = () => {
             </Button>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
-          >
-            {[
-              { icon: Shield, label: "Compliance First", desc: "Reduce delays & disputes" },
-              { icon: Globe, label: "Global Network", desc: "Asia, Europe, Americas" },
-              { icon: TrendingUp, label: "SME Focused", desc: "Scalable solutions" },
-            ].map((stat, i) => (
-              <motion.div 
-                key={i} 
-                whileHover={{ scale: 1.02, y: -2 }}
-                className="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-white/40 transition-all"
-              >
-                <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-left">
-                  <p className="font-semibold text-white">{stat.label}</p>
-                  <p className="text-sm text-white/70">{stat.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </div>
 
