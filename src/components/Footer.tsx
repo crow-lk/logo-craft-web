@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Globe, ArrowUp } from "lucide-react";
+import { Phone, Mail, MapPin, Globe, ArrowUp, MessageCircle } from "lucide-react";
 import lclLogo from "@/assets/lcl-logo.png";
 
 const Footer = () => {
@@ -105,6 +105,12 @@ const Footer = () => {
           >
             <h4 className="font-serif font-bold text-lg mb-6">Contact Us</h4>
             <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MessageCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <a href="https://wa.me/94772251443" className="text-sm text-white/70 hover:text-secondary transition-colors">
+                  +94 77 225 1443 (WhatsApp)
+                </a>
+              </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <div className="text-sm">

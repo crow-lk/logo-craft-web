@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import portImage from "@/assets/port-containers.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -14,201 +11,107 @@ const fadeInUp = {
 };
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Request Submitted!",
-      description: "Thank you — your request is received. We will respond within 1 business day.",
-    });
-    setFormData({ name: "", company: "", email: "", phone: "", service: "", message: "" });
-  };
-
   const contactInfo = [
-    { icon: MessageCircle, label: "WhatsApp / WeChat", value: "+94 77 225 1443", href: "https://wa.me/94772251443" },
+    { icon: MessageCircle, label: "WhatsApp", value: "+94 77 225 1443", href: "https://wa.me/94772251443" },
     { icon: Phone, label: "Call Us", value: "+94 77 227 5168", href: "tel:+94772275168" },
     { icon: Mail, label: "Email", value: "info@linkcorelanka.com", href: "mailto:info@linkcorelanka.com" },
     { icon: MapPin, label: "Address", value: "121/7 F, Ragama Road, Kadawatha, Sri Lanka 11850", href: "#" },
   ];
 
-  const services = [
-    "Sourcing & Procurement",
-    "Freight & Logistics Coordination",
-    "Customs & Trade Compliance",
-    "Documentation / Bank Pack",
-    "Importer of Record Advisory",
-    "E-commerce / Digital Trade",
-    "Not sure (Help me choose)",
+  const benefits = [
+    "Free initial consultation",
+    "Response within 1 business day",
+    "Expert trade guidance",
+    "No hidden fees",
   ];
 
   return (
-    <section id="contact" className="py-24 bg-muted/30 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-ocean" />
-      <div className="absolute top-40 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-40 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
+    <section id="contact" className="relative overflow-hidden">
+      {/* Full-width image background */}
+      <div className="absolute inset-0">
+        <img 
+          src={portImage} 
+          alt="Container port" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/90 to-navy/80" />
+      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div {...fadeInUp} className="text-center mb-16">
-          <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">Contact Us</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
-            Request Trade Support
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Share a few details so we can guide you faster (HS/permits/routing).
-          </p>
-        </motion.div>
+      <div className="container mx-auto px-4 py-24 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+          {/* Left content */}
+          <motion.div {...fadeInUp}>
+            <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">Get In Touch</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+              Ready to Simplify Your Trade?
+            </h2>
+            <p className="text-lg text-white/80 mb-8 leading-relaxed">
+              Tell us about your shipment or sourcing requirement — we'll design the right trade support model for your business.
+            </p>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
-          <motion.div 
-            {...fadeInUp}
-            className="bg-card rounded-3xl p-8 md:p-10 border border-border shadow-xl"
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Full Name *</label>
-                  <Input
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Your name"
-                    className="h-12"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Company Name *</label>
-                  <Input
-                    required
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="Your company"
-                    className="h-12"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Email *</label>
-                  <Input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="you@example.com"
-                    className="h-12"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Mobile / WhatsApp *</label>
-                  <Input
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+94 77 XXX XXXX"
-                    className="h-12"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Service Needed *</label>
-                <select
-                  required
-                  value={formData.service}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full h-12 rounded-lg border border-input bg-background px-4 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            {/* Benefits */}
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              {benefits.map((benefit, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-3"
                 >
-                  <option value="">Select a service</option>
-                  {services.map((service) => (
-                    <option key={service} value={service}>{service}</option>
-                  ))}
-                </select>
-              </div>
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0" />
+                  <span className="text-white/90 text-sm font-medium">{benefit}</span>
+                </motion.div>
+              ))}
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Message / Questions</label>
-                <Textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell us about your shipment or sourcing requirement..."
-                  rows={4}
-                  className="resize-none"
-                />
-              </div>
-
-              <Button type="submit" variant="gold" size="xl" className="w-full group">
-                Submit Request
-                <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </form>
-          </motion.div>
-
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <motion.div 
-              {...fadeInUp}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-gradient-to-br from-primary via-navy-light to-ocean rounded-3xl p-8 md:p-10 text-white relative overflow-hidden"
-            >
-              {/* Decorative circles */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-              
-              <div className="relative z-10">
-                <h3 className="text-2xl font-serif font-bold mb-8">Get in Touch</h3>
-                <div className="space-y-6">
-                  {contactInfo.map((item, i) => (
-                    <motion.a
-                      key={i}
-                      href={item.href}
-                      whileHover={{ x: 5 }}
-                      className="flex items-start gap-4 hover:opacity-80 transition-all"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-white/70">{item.label}</p>
-                        <p className="font-medium">{item.value}</p>
-                      </div>
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* CTA Box */}
-            <motion.div 
-              {...fadeInUp}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-card rounded-3xl p-8 border border-border text-center relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-gold-light" />
-              <Clock className="w-12 h-12 mx-auto text-secondary mb-4" />
-              <h4 className="font-serif font-bold text-xl text-foreground mb-3">Need Urgent Help?</h4>
-              <p className="text-muted-foreground mb-6">
-                If urgent, please WhatsApp us directly for faster response.
-              </p>
-              <Button variant="outline" size="lg" className="group" asChild>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button variant="gold" size="xl" className="group" asChild>
                 <a href="https://wa.me/94772251443" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                  WhatsApp an Expert
+                  <MessageCircle className="mr-2 w-5 h-5" />
+                  WhatsApp Us Now
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
-            </motion.div>
-          </div>
+              <Button variant="outline" size="xl" className="bg-transparent border-white/30 text-white hover:bg-white/10" asChild>
+                <a href="mailto:info@linkcorelanka.com">
+                  <Mail className="mr-2 w-5 h-5" />
+                  Send Email
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* Right - Contact cards */}
+          <motion.div 
+            {...fadeInUp}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-4"
+          >
+            {contactInfo.map((item, i) => (
+              <motion.a
+                key={i}
+                href={item.href}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ x: 10, scale: 1.02 }}
+                className="flex items-center gap-5 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover:border-secondary/30 hover:bg-white/15 transition-all group"
+              >
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary/30 to-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <item.icon className="w-6 h-6 text-secondary" />
+                </div>
+                <div>
+                  <p className="text-sm text-white/60 mb-1">{item.label}</p>
+                  <p className="font-semibold text-white">{item.value}</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-white/40 ml-auto group-hover:text-secondary transition-colors" />
+              </motion.a>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
