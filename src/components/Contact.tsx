@@ -15,7 +15,7 @@ const Contact = () => {
     { icon: MessageCircle, label: "WhatsApp", value: "+94 77 225 1443", href: "https://wa.me/94772251443" },
     { icon: Phone, label: "Call Us", value: "+94 77 227 5168", href: "tel:+94772275168" },
     { icon: Mail, label: "Email", value: "info@linkcorelanka.com", href: "mailto:info@linkcorelanka.com" },
-    { icon: MapPin, label: "Address", value: "121/7 F, Ragama Road, Kadawatha, Sri Lanka 11850", href: "#" },
+    { icon: MapPin, label: "Address", value: "32/1/1, Eldeniya Chuch Rd. Kadawata.", href: "#" },
   ];
 
   const benefits = [
