@@ -1,61 +1,107 @@
+import { motion } from "framer-motion";
 import { ArrowRight, Globe, Shield, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-shipping.jpg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-hero-gradient" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-      
-      {/* Floating elements */}
-      <div className="absolute top-1/4 right-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 left-10 w-48 h-48 bg-ocean/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src={heroImage} 
+          alt="Global shipping" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
+      </div>
+
+      {/* Floating decorative elements */}
+      <motion.div 
+        className="absolute top-1/4 right-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl"
+        animate={{ y: [-10, 10, -10] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute bottom-1/3 left-10 w-48 h-48 bg-ocean/20 rounded-full blur-3xl"
+        animate={{ y: [10, -10, 10] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-2 mb-8 animate-fade-up">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 mb-8"
+          >
             <Globe className="w-4 h-4 text-secondary" />
-            <span className="text-primary-foreground/90 text-sm font-medium">Sri Lanka's Trusted Trade Solutions Partner</span>
-          </div>
+            <span className="text-white/90 text-sm font-medium">Sri Lanka's Trusted Trade Solutions Partner</span>
+          </motion.div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-6 leading-tight animate-fade-up" style={{ animationDelay: '0.1s' }}>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white mb-6 leading-tight"
+          >
             We Make Global Trade{" "}
             <span className="text-gradient-gold">Simpler, Faster</span>, and More Compliant
-          </h1>
+          </motion.h1>
 
-          <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
             Helping Sri Lankan businesses import, export, and source internationally with confidence through compliance-first trade solutions.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          >
             <Button variant="gold" size="xl" className="group">
               Book Free Trade Health Check
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="xl" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button variant="outline" size="xl" className="bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/50">
               WhatsApp an Expert
             </Button>
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
+          >
             {[
               { icon: Shield, label: "Compliance First", desc: "Reduce delays & disputes" },
               { icon: Globe, label: "Global Network", desc: "Asia, Europe, Americas" },
               { icon: TrendingUp, label: "SME Focused", desc: "Scalable solutions" },
             ].map((stat, i) => (
-              <div key={i} className="flex items-center gap-4 bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-4 border border-primary-foreground/10">
+              <motion.div 
+                key={i} 
+                whileHover={{ scale: 1.02, y: -2 }}
+                className="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-secondary/30 transition-all"
+              >
                 <div className="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center">
                   <stat.icon className="w-6 h-6 text-secondary" />
                 </div>
                 <div className="text-left">
-                  <p className="font-semibold text-primary-foreground">{stat.label}</p>
-                  <p className="text-sm text-primary-foreground/70">{stat.desc}</p>
+                  <p className="font-semibold text-white">{stat.label}</p>
+                  <p className="text-sm text-white/70">{stat.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
