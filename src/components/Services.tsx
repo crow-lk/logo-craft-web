@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { Search, Ship, FileCheck, FileText, User, ShoppingCart, ArrowRight } from "lucide-react";
+import airFreightImage from "@/assets/air-freight.jpg";
+import customsImage from "@/assets/customs-documents.jpg";
+import warehouseImage from "@/assets/warehouse.jpg";
 
 const services = [
   {
@@ -10,18 +13,19 @@ const services = [
     items: [
       "Supplier discovery & global shortlisting",
       "RFQ / RFP management & bid evaluation",
-      "Price, Incoterms & terms negotiation support",
+      "Price, Incoterms & terms negotiation",
       "Purchase order drafting & expediting",
-      "Sample & quality inspection coordination",
+      "Sample & quality inspection",
       "Landed cost & TCO comparison",
     ],
     bestFor: "New suppliers • Cost optimisation • Scaling imports",
     gradient: "from-primary via-navy-light to-ocean",
+    image: warehouseImage,
   },
   {
     icon: Ship,
-    title: "Freight & Logistics Coordination",
-    subtitle: "",
+    title: "Freight & Logistics",
+    subtitle: "Air & Sea",
     tagline: "Neutral logistics planning without selling freight space.",
     items: [
       "Air & sea freight coordination (LCL / FCL)",
@@ -33,66 +37,48 @@ const services = [
     ],
     bestFor: "SMEs needing transparency & control",
     gradient: "from-ocean via-primary to-navy",
+    image: airFreightImage,
   },
   {
     icon: FileCheck,
-    title: "Customs & Trade Compliance",
+    title: "Customs & Compliance",
     subtitle: "",
     tagline: "Compliance addressed before cargo moves — not at the port.",
     items: [
       "HS classification with rationale",
       "Permit & restricted-goods mapping",
       "Valuation & origin guidance",
-      "Document compliance review (CI / PL / COO)",
+      "Document compliance review",
       "Duty & tax estimation",
       "Post-entry query support",
     ],
     bestFor: "We support your clearing agent — we don't replace them",
     gradient: "from-navy via-primary to-ocean",
+    image: customsImage,
   },
+];
+
+const additionalServices = [
   {
     icon: FileText,
-    title: "Trade Documentation & Bank Support",
-    subtitle: "",
-    tagline: "Clean documents mean faster clearance and fewer bank queries.",
-    items: [
-      "CI & Packing List templates",
-      "COO & legalization guidance",
-      "BL / AWB & insurance checklist",
-      "LC / TT bank document packs",
-      "Pre-alert preparation (48–72 hrs)",
-      "Digital archiving & version control",
-    ],
-    bestFor: "LC imports • Repeat shipments • Multi-supplier trades",
-    gradient: "from-secondary via-gold-light to-secondary",
+    title: "Trade Documentation",
+    tagline: "Clean documents mean faster clearance",
+    items: ["CI & Packing List templates", "COO & legalization", "LC / TT bank packs", "Digital archiving"],
+    gradient: "from-secondary to-gold-light",
   },
   {
     icon: User,
-    title: "Importer of Record (IOR) Advisory",
-    subtitle: "",
-    tagline: "Importer of Record decisions made early — never assumed.",
-    items: [
-      "Client as IOR (most common)",
-      "Third-party IOR (project-based)",
-      "LCL as IOR (limited, contract-only cases)",
-    ],
-    note: "IOR selection impacts permits, duties, banking, insurance & audit liability.",
-    gradient: "from-primary via-secondary to-gold-light",
+    title: "IOR Advisory",
+    tagline: "Importer of Record decisions made early",
+    items: ["Client as IOR", "Third-party IOR", "LCL as IOR (contract-only)"],
+    gradient: "from-primary to-secondary",
   },
   {
     icon: ShoppingCart,
-    title: "Digital & E-commerce Trade Support",
-    subtitle: "Selective",
-    tagline: "Helping SMEs test and scale cross-border selling.",
-    items: [
-      "Cross-border seller setup guidance",
-      "Basic product listing support",
-      "Courier & shipping setup guidance",
-      "Returns & claims workflow",
-      "Simple trade dashboards (Zoho-based)",
-    ],
-    bestFor: "First-time exporters • Online sellers",
-    gradient: "from-ocean via-secondary to-gold-light",
+    title: "E-commerce Support",
+    tagline: "Scale cross-border selling",
+    items: ["Seller setup guidance", "Product listing support", "Returns & claims workflow"],
+    gradient: "from-ocean to-secondary",
   },
 ];
 
@@ -114,64 +100,99 @@ const Services = () => {
         <motion.div {...fadeInUp} className="text-center mb-16">
           <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">Our Services</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
-            Structured Trade Support for Sri Lankan SMEs
+            Structured Trade Support
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Modular, compliance-first trade services designed to reduce risk, improve cost visibility, and simplify international trade.
+            Modular, compliance-first trade services designed to reduce risk and simplify international trade.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Main services with images */}
+        <div className="space-y-12 mb-20">
           {services.map((service, i) => (
             <motion.div
               key={i}
               {...fadeInUp}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-transparent hover:shadow-2xl transition-all duration-300"
+              className={`grid lg:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
             >
-              {/* Gradient header */}
-              <div className={`bg-gradient-to-r ${service.gradient} p-6 relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/10" />
-                <div className="relative z-10">
-                  <motion.div 
-                    whileHover={{ rotate: 5, scale: 1.1 }}
-                    className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4"
-                  >
-                    <service.icon className="w-6 h-6 text-white" />
-                  </motion.div>
-                  <h3 className="text-xl font-serif font-bold text-white">
-                    {service.title}
-                  </h3>
-                  {service.subtitle && (
-                    <span className="text-sm text-white/80 font-medium">{service.subtitle}</span>
-                  )}
+              {/* Image */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className={`relative rounded-3xl overflow-hidden shadow-2xl ${i % 2 === 1 ? 'lg:order-2' : ''}`}
+              >
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  className="w-full h-[300px] lg:h-[400px] object-cover"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-40`} />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <service.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-serif font-bold text-white">{service.title}</h3>
+                      {service.subtitle && <span className="text-white/80 text-sm">{service.subtitle}</span>}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Content */}
-              <div className="p-6">
-                <p className="text-sm text-primary font-medium mb-4 leading-relaxed">{service.tagline}</p>
-                <ul className="space-y-2 mb-4">
+              <div className={`${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <p className="text-primary font-semibold mb-4">{service.tagline}</p>
+                <ul className="space-y-3 mb-6">
                   {service.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                      <ArrowRight className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                    <motion.li 
+                      key={j} 
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: j * 0.05 }}
+                      className="flex items-start gap-3 text-muted-foreground"
+                    >
+                      <ArrowRight className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+                <div className="inline-flex items-center gap-2 bg-muted px-4 py-2 rounded-full">
+                  <span className="text-sm font-semibold text-secondary">Best for:</span>
+                  <span className="text-sm text-muted-foreground">{service.bestFor}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Additional services grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {additionalServices.map((service, i) => (
+            <motion.div
+              key={i}
+              {...fadeInUp}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all"
+            >
+              <div className={`bg-gradient-to-r ${service.gradient} p-5`}>
+                <div className="flex items-center gap-3">
+                  <service.icon className="w-6 h-6 text-white" />
+                  <h4 className="font-serif font-bold text-white">{service.title}</h4>
+                </div>
+              </div>
+              <div className="p-5">
+                <p className="text-sm text-primary font-medium mb-3">{service.tagline}</p>
+                <ul className="space-y-2">
+                  {service.items.map((item, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                {service.bestFor && (
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-xs font-semibold text-secondary">
-                      Best for: <span className="text-muted-foreground font-normal">{service.bestFor}</span>
-                    </p>
-                  </div>
-                )}
-                {service.note && (
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-xs text-muted-foreground italic">{service.note}</p>
-                  </div>
-                )}
               </div>
             </motion.div>
           ))}
@@ -180,24 +201,25 @@ const Services = () => {
         {/* Engagement models */}
         <motion.div 
           {...fadeInUp}
-          className="mt-16 bg-gradient-to-r from-card via-card to-card rounded-2xl p-8 md:p-10 border border-border max-w-4xl mx-auto relative overflow-hidden"
+          className="bg-gradient-to-r from-card via-card to-card rounded-3xl p-8 md:p-10 border border-border max-w-4xl mx-auto relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-ocean" />
-          <h3 className="text-xl md:text-2xl font-serif font-bold text-foreground text-center mb-8">How Clients Engage Us</h3>
+          <h3 className="text-xl md:text-2xl font-serif font-bold text-foreground text-center mb-8">Flexible Engagement Models</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: "Per shipment", icon: "📦" },
-              { label: "Per project", icon: "📋" },
-              { label: "Monthly retainer", icon: "📅" },
-              { label: "Advisory-only", icon: "💡" },
+              { label: "Per shipment", icon: "📦", desc: "Single trade support" },
+              { label: "Per project", icon: "📋", desc: "End-to-end coordination" },
+              { label: "Monthly retainer", icon: "📅", desc: "Ongoing partnership" },
+              { label: "Advisory-only", icon: "💡", desc: "Expert guidance" },
             ].map((model, i) => (
               <motion.div 
                 key={i} 
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -5 }}
                 className="text-center p-5 rounded-xl bg-muted/50 hover:bg-muted border border-transparent hover:border-primary/20 transition-all cursor-default"
               >
-                <span className="text-2xl mb-2 block">{model.icon}</span>
-                <p className="font-medium text-foreground">{model.label}</p>
+                <span className="text-3xl mb-3 block">{model.icon}</span>
+                <p className="font-semibold text-foreground mb-1">{model.label}</p>
+                <p className="text-xs text-muted-foreground">{model.desc}</p>
               </motion.div>
             ))}
           </div>
