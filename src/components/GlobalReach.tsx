@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Globe, Building2, MapPin, Landmark } from "lucide-react";
-import globalTradeImage from "@/assets/global-trade-network.jpg";
+import globalTradeImage from "@/assets/global-trade-network.webp";
 
 const regions = [
   { name: "Asia", icon: Globe, countries: "China, India, Japan, Vietnam", color: "from-primary to-ocean" },
