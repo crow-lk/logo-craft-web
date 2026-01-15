@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { Search, Ship, FileCheck, FileText, User, ShoppingCart, ArrowRight, Package, Calendar, Lightbulb, CheckCircle, Archive, FileBox, AlertTriangle, CreditCard, FolderArchive, UserCheck, Users, Building2, Globe, RotateCcw, LayoutDashboard } from "lucide-react";
+import { Search, Ship, FileCheck, FileText, User, ShoppingCart, ArrowRight, Package, Calendar, Lightbulb, FileBox, AlertTriangle, CreditCard, FolderArchive, UserCheck, Users, Building2, Globe, RotateCcw, LayoutDashboard } from "lucide-react";
 import airFreightImage from "@/assets/air-freight.jpg";
 import customsImage from "@/assets/customs-documents.jpg";
 import warehouseImage from "@/assets/warehouse.jpg";
 import portContainersImage from "@/assets/port-containers.jpg";
+import teamMeetingImage from "@/assets/team-meeting.jpg";
+import globalTradeImage from "@/assets/global-trade-network.jpg";
 
 const services = [
   {
@@ -87,7 +89,7 @@ const additionalServices = [
     ],
     note: "IOR selection impacts permits, duties, banking, insurance & audit liability.",
     gradient: "from-primary to-secondary",
-    image: customsImage,
+    image: teamMeetingImage,
   },
   {
     icon: ShoppingCart,
@@ -103,7 +105,7 @@ const additionalServices = [
     ],
     bestFor: "First-time exporters • Online sellers",
     gradient: "from-ocean to-secondary",
-    image: airFreightImage,
+    image: globalTradeImage,
   },
 ];
 

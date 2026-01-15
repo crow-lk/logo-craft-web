@@ -1,10 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye } from "lucide-react";
-import teamImage from "@/assets/team-meeting.jpg";
-import warehouseImage from "@/assets/warehouse.jpg";
-import portContainersImage from "@/assets/port-containers.jpg";
-import customsDocumentsImage from "@/assets/customs-documents.jpg";
-import airFreightImage from "@/assets/air-freight.jpg";
+import heroShippingImage from "@/assets/hero-shipping.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -12,33 +8,6 @@ const fadeInUp = {
   viewport: { once: true, margin: "-100px" },
   transition: { duration: 0.6 }
 };
-
-const standForItems = [
-  {
-    title: "Compliance Before Cargo",
-    desc: "We address HS classification, permits, valuation, and documentation before goods move.",
-    gradient: "from-primary to-navy-light",
-    image: customsDocumentsImage,
-  },
-  {
-    title: "Neutral & Independent",
-    desc: "We don't sell freight space or earn hidden commissions. Our advice is unbiased.",
-    gradient: "from-navy-light to-ocean",
-    image: warehouseImage,
-  },
-  {
-    title: "Built for Sri Lankan SMEs",
-    desc: "Enterprise-level trade discipline in a practical, scalable, cost-effective model.",
-    gradient: "from-ocean to-primary",
-    image: portContainersImage,
-  },
-  {
-    title: "Process-Driven Execution",
-    desc: "Every shipment follows a structured workflow with clear roles and accountability.",
-    gradient: "from-secondary to-gold-light",
-    image: airFreightImage,
-  },
-];
 
 const About = () => {
   return (
@@ -69,8 +38,8 @@ const About = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src={teamImage} 
-                alt="LCL Trade Services Team" 
+                src={heroShippingImage} 
+                alt="LCL Trade Services" 
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
@@ -82,7 +51,7 @@ const About = () => {
         </div>
 
         {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-20">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <motion.div 
             {...fadeInUp}
             whileHover={{ y: -5 }}
@@ -124,44 +93,6 @@ const About = () => {
               ))}
             </ul>
           </motion.div>
-        </div>
-
-        {/* What we stand for */}
-        <div className="max-w-6xl mx-auto">
-          <motion.h3 
-            {...fadeInUp}
-            className="text-2xl md:text-3xl font-serif font-bold text-center text-foreground mb-12"
-          >
-            What We Stand For
-          </motion.h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {standForItems.map((item, i) => (
-              <motion.div 
-                key={i} 
-                {...fadeInUp}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group relative bg-card rounded-xl overflow-hidden border border-border hover:border-transparent hover:shadow-xl transition-all duration-300"
-              >
-                {/* Image */}
-                <div className="relative h-36 overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent`} />
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient}`} />
-                </div>
-                
-                {/* Content */}
-                <div className="p-5">
-                  <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
