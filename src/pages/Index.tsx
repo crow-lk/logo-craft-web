@@ -3,10 +3,12 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import WhatWeDo from "@/components/WhatWeDo";
 import Services from "@/components/Services";
-import Industries from "@/components/Industries";
+import WhyThisModelWorks from "@/components/WhyThisModelWorks";
+import ServicesCTA from "@/components/ServicesCTA";
 import Values from "@/components/Values";
+import Industries from "@/components/Industries";
 import GlobalReach from "@/components/GlobalReach";
-import Contact from "@/components/Contact";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -19,10 +21,12 @@ const Index = () => {
         <About />
         <WhatWeDo />
         <Services />
-        <Industries />
+        <WhyThisModelWorks />
+        <ServicesCTA />
         <Values />
+        <Industries />
         <GlobalReach />
-        <Contact />
+        <ContactForm />
       </main>
       <Footer />
       <WhatsAppButton />
