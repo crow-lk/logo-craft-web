@@ -14,7 +14,7 @@ const Contact = () => {
   const contactInfo = [
     { icon: MessageCircle, label: "WhatsApp", value: "+94 77 225 1443", href: "https://wa.me/94772251443" },
     { icon: Phone, label: "Call Us", value: "+94 77 227 5168", href: "tel:+94772275168" },
-    { icon: Mail, label: "Email", value: "info@linkcorelanka.com", href: "mailto:info@linkcorelanka.com" },
+    { icon: Mail, label: "Email", value: "info@linkcorelk.com", href: "mailto:info@linkcorelk.com" },
     { icon: MapPin, label: "Address", value: "32/1/1, Eldeniya Chuch Rd. Kadawata.", href: "#" },
   ];
 
@@ -76,7 +76,7 @@ const Contact = () => {
                 </a>
               </Button>
               <Button variant="outline" size="xl" className="bg-transparent border-white/30 text-white hover:bg-white/10" asChild>
-                <a href="mailto:info@linkcorelanka.com">
+                <a href="mailto:info@linkcorelk.com">
                   <Mail className="mr-2 w-5 h-5" />
                   Send Email
                 </a>

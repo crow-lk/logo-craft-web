@@ -40,9 +40,9 @@ const Header = () => {
             <Phone className="w-3 h-3" />
             +94 77 227 5168
           </a>
-          <a href="mailto:info@linkcorelanka.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
+          <a href="mailto:info@linkcorelk.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
             <Mail className="w-3 h-3" />
-            info@linkcorelanka.com
+            info@linkcorelk.com
           </a>
         </div>
       </motion.div>

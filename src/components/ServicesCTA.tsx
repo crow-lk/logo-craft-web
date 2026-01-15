@@ -52,11 +52,11 @@ const ServicesCTA = () => {
           {/* Contact info */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a 
-              href="mailto:info@linkcorelanka.com" 
+              href="mailto:info@linkcorelk.com" 
               className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="w-5 h-5 text-secondary" />
-              <span>info@linkcorelanka.com</span>
+              <span>info@linkcorelk.com</span>
             </a>
             <a 
               href="https://wa.me/94772251443" 

@@ -48,11 +48,11 @@ const Footer = () => {
               Sri Lanka's trusted trade solutions partner. Making global trade simpler, faster, and more compliant for Sri Lankan businesses.
             </p>
             <a
-              href="https://www.linkcorelanka.com"
+              href="https://www.linkcorelk.com"
               className="inline-flex items-center gap-2 text-secondary hover:text-gold-light transition-colors font-medium"
             >
               <Globe className="w-4 h-4" />
-              www.linkcorelanka.com
+              www.linkcorelk.com
             </a>
           </motion.div>
 
@@ -120,15 +120,15 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                <a href="mailto:info@linkcorelanka.com" className="text-sm text-white/70 hover:text-secondary transition-colors">
-                  info@linkcorelanka.com
+                <a href="mailto:info@linkcorelk.com" className="text-sm text-white/70 hover:text-secondary transition-colors">
+                  info@linkcorelk.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-white/70">
-                  121/7 F, Ragama Road,<br />
-                  Kadawatha, Sri Lanka 11850
+                  32/1/1, Eldeniya Chuch Rd.<br />
+                  Kadawata.
                 </p>
               </li>
             </ul>
