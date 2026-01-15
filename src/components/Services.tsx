@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { Search, Ship, FileCheck, FileText, User, ShoppingCart, ArrowRight, Package, Calendar, Lightbulb } from "lucide-react";
+import { Search, Ship, FileCheck, FileText, User, ShoppingCart, ArrowRight, Package, Calendar, Lightbulb, CheckCircle, Archive, FileBox, AlertTriangle, CreditCard, FolderArchive, UserCheck, Users, Building2, Globe, RotateCcw, LayoutDashboard } from "lucide-react";
 import airFreightImage from "@/assets/air-freight.jpg";
 import customsImage from "@/assets/customs-documents.jpg";
 import warehouseImage from "@/assets/warehouse.jpg";
+import portContainersImage from "@/assets/port-containers.jpg";
 
 const services = [
   {
@@ -61,24 +62,48 @@ const services = [
 const additionalServices = [
   {
     icon: FileText,
-    title: "Trade Documentation",
-    tagline: "Clean documents mean faster clearance",
-    items: ["CI & Packing List templates", "COO & legalization", "LC / TT bank packs", "Digital archiving"],
+    title: "Trade Documentation & Bank Support",
+    tagline: "Clean documents mean faster clearance and fewer bank queries.",
+    items: [
+      { icon: FileBox, text: "CI & Packing List templates" },
+      { icon: FileCheck, text: "COO & legalization guidance" },
+      { icon: Ship, text: "BL / AWB & insurance checklist" },
+      { icon: CreditCard, text: "LC / TT bank document packs" },
+      { icon: AlertTriangle, text: "Pre-alert preparation (48–72 hrs)" },
+      { icon: FolderArchive, text: "Digital archiving & version control" },
+    ],
+    bestFor: "LC imports • Repeat shipments • Multi-supplier trades",
     gradient: "from-secondary to-gold-light",
+    image: portContainersImage,
   },
   {
     icon: User,
-    title: "IOR Advisory",
-    tagline: "Importer of Record decisions made early",
-    items: ["Client as IOR", "Third-party IOR", "LCL as IOR (contract-only)"],
+    title: "Importer of Record (IOR) Advisory",
+    tagline: "Importer of Record decisions made early — never assumed.",
+    items: [
+      { icon: UserCheck, text: "Client as IOR (most common)" },
+      { icon: Users, text: "Third-party IOR (project-based)" },
+      { icon: Building2, text: "LCL as IOR (limited, contract-only cases)" },
+    ],
+    note: "IOR selection impacts permits, duties, banking, insurance & audit liability.",
     gradient: "from-primary to-secondary",
+    image: customsImage,
   },
   {
     icon: ShoppingCart,
-    title: "E-commerce Support",
-    tagline: "Scale cross-border selling",
-    items: ["Seller setup guidance", "Product listing support", "Returns & claims workflow"],
+    title: "Digital & E-commerce Trade Support",
+    subtitle: "(Selective)",
+    tagline: "Helping SMEs test and scale cross-border selling.",
+    items: [
+      { icon: Globe, text: "Cross-border seller setup guidance" },
+      { icon: Package, text: "Basic product listing support" },
+      { icon: Ship, text: "Courier & shipping setup guidance" },
+      { icon: RotateCcw, text: "Returns & claims workflow" },
+      { icon: LayoutDashboard, text: "Simple trade dashboards (Zoho-based)" },
+    ],
+    bestFor: "First-time exporters • Online sellers",
     gradient: "from-ocean to-secondary",
+    image: airFreightImage,
   },
 ];
 
@@ -167,32 +192,68 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Additional services grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        {/* Additional services - same style as main services */}
+        <div className="space-y-12 mb-16">
           {additionalServices.map((service, i) => (
             <motion.div
               key={i}
               {...fadeInUp}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all"
+              className={`grid lg:grid-cols-2 gap-8 items-center ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}
             >
-              <div className={`bg-gradient-to-r ${service.gradient} p-5`}>
-                <div className="flex items-center gap-3">
-                  <service.icon className="w-6 h-6 text-white" />
-                  <h4 className="font-serif font-bold text-white">{service.title}</h4>
+              {/* Image */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className={`relative rounded-3xl overflow-hidden shadow-2xl ${i % 2 === 0 ? 'lg:order-2' : ''}`}
+              >
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  className="w-full h-[300px] lg:h-[400px] object-cover"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-40`} />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <service.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-serif font-bold text-white">{service.title}</h3>
+                      {service.subtitle && <span className="text-white/80 text-sm">{service.subtitle}</span>}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="p-5">
-                <p className="text-sm text-primary font-medium mb-3">{service.tagline}</p>
-                <ul className="space-y-2">
+              </motion.div>
+
+              {/* Content */}
+              <div className={`${i % 2 === 0 ? 'lg:order-1' : ''}`}>
+                <p className="text-primary font-semibold mb-4">{service.tagline}</p>
+                <ul className="space-y-3 mb-6">
                   {service.items.map((item, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                      {item}
-                    </li>
+                    <motion.li 
+                      key={j} 
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: j * 0.05 }}
+                      className="flex items-start gap-3 text-muted-foreground"
+                    >
+                      <item.icon className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      {item.text}
+                    </motion.li>
                   ))}
                 </ul>
+                {service.note && (
+                  <p className="text-sm text-primary/80 italic mb-4 p-3 bg-primary/5 rounded-lg border-l-4 border-primary">
+                    {service.note}
+                  </p>
+                )}
+                {service.bestFor && (
+                  <div className="inline-flex items-center gap-2 bg-muted px-4 py-2 rounded-full">
+                    <span className="text-sm font-semibold text-secondary">Best for:</span>
+                    <span className="text-sm text-muted-foreground">{service.bestFor}</span>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

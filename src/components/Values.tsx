@@ -53,7 +53,7 @@ const fadeInUp = {
 
 const Values = () => {
   return (
-    <section id="values" className="py-24 bg-muted/30 relative overflow-hidden">
+    <section id="values" className="py-24 bg-background relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />

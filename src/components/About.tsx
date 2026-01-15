@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye } from "lucide-react";
 import teamImage from "@/assets/team-meeting.jpg";
+import warehouseImage from "@/assets/warehouse.jpg";
+import portContainersImage from "@/assets/port-containers.jpg";
+import customsDocumentsImage from "@/assets/customs-documents.jpg";
+import airFreightImage from "@/assets/air-freight.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -8,6 +12,33 @@ const fadeInUp = {
   viewport: { once: true, margin: "-100px" },
   transition: { duration: 0.6 }
 };
+
+const standForItems = [
+  {
+    title: "Compliance Before Cargo",
+    desc: "We address HS classification, permits, valuation, and documentation before goods move.",
+    gradient: "from-primary to-navy-light",
+    image: customsDocumentsImage,
+  },
+  {
+    title: "Neutral & Independent",
+    desc: "We don't sell freight space or earn hidden commissions. Our advice is unbiased.",
+    gradient: "from-navy-light to-ocean",
+    image: warehouseImage,
+  },
+  {
+    title: "Built for Sri Lankan SMEs",
+    desc: "Enterprise-level trade discipline in a practical, scalable, cost-effective model.",
+    gradient: "from-ocean to-primary",
+    image: portContainersImage,
+  },
+  {
+    title: "Process-Driven Execution",
+    desc: "Every shipment follows a structured workflow with clear roles and accountability.",
+    gradient: "from-secondary to-gold-light",
+    image: airFreightImage,
+  },
+];
 
 const About = () => {
   return (
@@ -20,17 +51,15 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6 leading-tight">
               About Linkcore Lanka
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="text-base text-muted-foreground leading-relaxed mb-6">
               Linkcore Lanka (LCL) is a Sri Lanka–based trade services and coordination firm built to help SMEs import, export, and source internationally with confidence.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              We operate as a neutral, compliance-first trade control layer, supporting clients from RFQ and purchase order stage through shipment execution and audit-ready closure. Our role is to design, structure, and coordinate international trade—so shipments move with clarity, predictability, and control.
+            <p className="text-base text-muted-foreground leading-relaxed mb-6">
+              We operate as a neutral, compliance-first trade control layer, supporting clients from RFQ and purchase order stage through shipment execution and audit-ready closure. Our role is to design, structure, and coordinate international trade so shipments move with clarity, predictability, and control.
             </p>
-            <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-xl border-l-4 border-secondary">
-              <p className="text-sm text-muted-foreground italic">
-                "We work alongside licensed clearing agents, freight forwarders, banks, and regulators—ensuring that decisions are made early and risks are managed before cargo reaches the port."
-              </p>
-            </div>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Linkcore Lanka is not a freight forwarder or a clearing agent. Instead, we work alongside licensed clearing agents, freight forwarders, banks, and regulators ensuring that decisions are made early, documents are aligned, and risks are managed before cargo reaches the port.
+            </p>
           </motion.div>
 
           <motion.div 
@@ -53,11 +82,11 @@ const About = () => {
         </div>
 
         {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-20">
           <motion.div 
             {...fadeInUp}
             whileHover={{ y: -5 }}
-            className="bg-card rounded-2xl p-8 shadow-lg border border-border hover:shadow-xl hover:border-primary/20 transition-all duration-300"
+            className="bg-card rounded-2xl p-8 lg:p-10 shadow-lg border border-border hover:shadow-xl hover:border-primary/20 transition-all duration-300"
           >
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6">
               <Eye className="w-7 h-7 text-primary" />
@@ -72,7 +101,7 @@ const About = () => {
             {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.1 }}
             whileHover={{ y: -5 }}
-            className="bg-card rounded-2xl p-8 shadow-lg border border-border hover:shadow-xl hover:border-secondary/30 transition-all duration-300"
+            className="bg-card rounded-2xl p-8 lg:p-10 shadow-lg border border-border hover:shadow-xl hover:border-secondary/30 transition-all duration-300"
           >
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary/30 to-secondary/10 flex items-center justify-center mb-6">
               <Target className="w-7 h-7 text-secondary" />
@@ -106,38 +135,30 @@ const About = () => {
             What We Stand For
           </motion.h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Compliance Before Cargo",
-                desc: "We address HS classification, permits, valuation, and documentation before goods move.",
-                gradient: "from-primary to-navy-light",
-              },
-              {
-                title: "Neutral & Independent",
-                desc: "We don't sell freight space or earn hidden commissions. Our advice is unbiased.",
-                gradient: "from-navy-light to-ocean",
-              },
-              {
-                title: "Built for Sri Lankan SMEs",
-                desc: "Enterprise-level trade discipline in a practical, scalable, cost-effective model.",
-                gradient: "from-ocean to-primary",
-              },
-              {
-                title: "Process-Driven Execution",
-                desc: "Every shipment follows a structured workflow with clear roles and accountability.",
-                gradient: "from-secondary to-gold-light",
-              },
-            ].map((item, i) => (
+            {standForItems.map((item, i) => (
               <motion.div 
                 key={i} 
                 {...fadeInUp}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="group relative bg-card rounded-xl p-6 border border-border hover:border-transparent transition-all duration-300 overflow-hidden"
+                className="group relative bg-card rounded-xl overflow-hidden border border-border hover:border-transparent hover:shadow-xl transition-all duration-300"
               >
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient}`} />
-                <h4 className="font-semibold text-foreground mb-3 mt-2">{item.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                {/* Image */}
+                <div className="relative h-36 overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent`} />
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient}`} />
+                </div>
+                
+                {/* Content */}
+                <div className="p-5">
+                  <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
