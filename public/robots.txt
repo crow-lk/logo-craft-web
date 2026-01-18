@@ -1,4 +1,4 @@
-# robots.txt for Canga Holdings (Pvt) Ltd
+# robots.txt for linkcorelk (Pvt) Ltd
 # Allows search engines to crawl the main website while disallowing sensitive or unnecessary paths
 
 User-agent: *
