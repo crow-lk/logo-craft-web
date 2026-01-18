@@ -6,4 +6,4 @@ Allow: /
 Disallow: /includes/
 Disallow: /assets/fonts/
 Disallow: /*.php$  # Prevent crawling of PHP files except index.php
-Sitemap: https://www.cangaholdings.com/sitemap.xml
+Sitemap: https://www.linkcorelk.com/sitemap.xml
